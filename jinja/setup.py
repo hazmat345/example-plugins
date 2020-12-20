@@ -23,7 +23,7 @@ setup(
     license="MIT",
     packages=["jinja"],
     include_package_data=True,
-    install_requires=["brewtils"],
+    install_requires=["brewtils", "jinja2"],
     classifiers=[
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 2",
