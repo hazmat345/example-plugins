@@ -30,12 +30,19 @@ class Client:
 
         return template.render(navigation=nav, a_variable=a_variable)
 
+    @parameter(key="nav", model=Nav, multi=True)
+    @parameter(key="a_variable", type="String")
+    @command(output_type="HTML", output_template="test_template.j2")
+    def better_jinja(self, a_variable=None, nav=None):
+        return {"navigation": nav, "a_variable": a_variable}
+
 
 def main():
     plugin = Plugin(
         name="jinja",
         version=__version__,
         description="",
+        template_loader=FileSystemLoader("jinja/resources"),
     )
     plugin.client = Client()
     plugin.run()
